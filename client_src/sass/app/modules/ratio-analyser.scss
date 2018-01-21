@@ -1,0 +1,42 @@
+.ratio-analyser {
+  .ratio-analyser-options {
+
+  }
+}
+
+.ratio-summary {
+  font-style: italic;
+  margin: 20px 0px;
+}
+
+.currency-result:not(:first-child) {
+  margin-top: 15px;
+}
+
+.currency-chain-item {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: map-get($pallette, lightgrey);
+}
+
+.currency-chain-splitter {
+  border-top: 1px solid map-get($pallette, darkgrey);
+}
+
+.currency-chain-item:first-child {
+  .currency-chain-splitter {
+    display: none;
+  }
+}
+
+.currency-chain-from {
+  
+}
+
+.currency-chain-to {
+  
+}
+
+.currency-chain-action {
+  
+}

@@ -1,0 +1,71 @@
+
+.content-cap {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.content-container {
+  height: 100%;
+}
+
+.primary-container {
+
+}
+
+.parent-ui-view {
+  overflow-y: scroll;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 10px;
+  background-color: map-get($pallette, lightgrey);
+}
+
+.dark-layer {
+  background-color: map-get($pallette, dark-layer);
+}
+
+.section-title {
+  color: map-get($pallette, primary);
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 20px 40px;
+  background-color: map-get($pallette, white);
+  margin-bottom: 5px;
+  .currency-icon {
+    width: 1em;
+    height: 1em;
+  }
+}
+.section-title.small {
+  font-size: 16px;
+  line-height: 16px;
+  padding: 10px 20px;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+
+.section-content {
+  padding: 20px 40px;
+  background-color: map-get($pallette, white);
+}
+.section-content.small {
+  padding: 10px 20px;
+}
+
+.slider-label {
+  color: map-get($pallette, label);
+  font-size: 12px;
+  transform: translate3d(0,6px,0) scale(.75);
+}
+
+button.md-raised.md-primary.md-button {
+  color: map-get($pallette, white);
+}
+
+.align-center {
+  text-align: center;
+}

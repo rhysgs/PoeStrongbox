@@ -1,0 +1,4 @@
+.league-list(layout='row', layout-wrap, layout-align='center center')
+  .league-list-item(ng-repeat='league in leagues', ui-sref='league({ leagueId: league.id })')
+    .league-list-item-inner.league-background(layout='row', layout-align='center center', ng-class='league.css')
+      .league-list-item-title(flex) {{ league.name }}

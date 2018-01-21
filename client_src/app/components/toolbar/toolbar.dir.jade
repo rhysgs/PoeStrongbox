@@ -1,0 +1,9 @@
+.toolbar
+  div(ng-if='league', layout='row', layout-align='space-between center')
+    .league
+      i.material-icons visibility
+      | {{ league.name || 'Loading...' }}
+    div(flex)
+    .pull-details
+      .pull-title Ratios recieved
+      .pull-time {{ pull._ca | date : 'hh:mma EEE MMM, yyyy' }}

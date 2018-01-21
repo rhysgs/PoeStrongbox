@@ -1,0 +1,109 @@
+.sidenav {
+  width: 250px;
+  max-width: 33vw;
+  color: map-get($pallette, white);
+  background-color: map-get($pallette, darkgrey);
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidenav-icon {
+  text-align: center;
+  height: 40px;
+  padding-top: 30px;
+  i {
+    font-size: 60px;
+    line-height: 40px;
+  }
+}
+
+.sidenav-title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.sidenav-subtitle {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 0px;
+  background-color: map-get($pallette, dark-layer);
+}
+
+.sidenav-currencies {
+  margin-top: 10px;
+  padding: 10px 0px;
+  background-color: map-get($pallette, dark-layer);
+}
+
+.sidenav-currency {
+  padding: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out, filter 0.15s ease-in-out;
+}
+
+.sidenav-item {
+  background-color: map-get($pallette, dark-layer);
+  padding: 10px;
+  text-align: center;
+  user-select: none;
+  transition: filter 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.sidenav-item:hover {
+  filter: brightness(140%);
+}
+
+.sidenav-currency:not(.active) {
+  filter: grayscale(100);
+  opacity: 0.5;
+}
+
+.sidenav-currency.active {
+  // background-color: map-get($pallette, white);
+}
+
+.sidenav.league-selected {
+  .sidenav-subtitle {
+    background-color: rgba(0,0,0,0.7);
+  }
+}
+
+.search-summary {
+  margin-top: 10px;
+}
+
+.search-summary-title {
+  background-color: map-get($pallette, dark-layer);
+  text-align: center;
+  padding: 5px;
+}
+
+.search-summary-item {
+  font-size: 13px;
+}
+
+.search-summary-item:not(:first-child) {
+  border-top: 2px solid map-get($pallette, dark-layer);
+  padding: 3px 0px 0px 0px;
+}
+
+.search-summary-from {
+  
+}
+
+.search-summary-split {
+  
+}
+
+.search-summary-to {
+  
+}
+
+.search-summary-details {
+  margin-left: 10px;
+}

@@ -1,0 +1,19 @@
+{
+  "defaultEnv": "local",
+  "local": {
+    "driver": "mysql",
+    "user": "<username>",
+    "password": "<password>",
+    "host": "localhost",
+    "database": "migrations",
+    "multipleStatements": true
+  },
+  "live": {
+    "driver": "mysql",
+    "user": "<username>",
+    "password": "<password>",
+    "host": "<live db host>",
+    "database": "migrations",
+    "multipleStatements": true
+  }
+}

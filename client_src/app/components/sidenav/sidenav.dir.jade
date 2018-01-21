@@ -1,0 +1,26 @@
+.sidenav(ng-class='{ "league-selected": league != null }')
+  .league-background(ng-class='league.css')
+    .sidenav-icon
+      i.material-icons trending_up
+    .sidenav-title STRONG BOX
+    .sidenav-subtitle CURRENCY ANALYSER
+  
+  .sidenav-item(ng-show='league', ui-sref='index') CHANGE LEAGUE
+
+  .sidenav-currencies(ng-show='league', layout='row', layout-wrap, layout-align='start start')
+    .sidenav-currency(ng-repeat='currency in currencies', ng-click='currency.active = !currency.active', ng-class='{ active: currency.active }', flex='25', layout='row', layout-align='center center')
+      .currency-icon(ng-class='currency.css')
+        md-tooltip {{ currency.name }}
+
+  .search-summary
+    .search-summary-title POPULAR SEARCHES
+    .search-summary-item(ng-repeat='search in searchSummary', layout='row', layout-align='center center')
+      .search-summary-from
+        .currency-icon(ng-class='search.currency_from_css')
+          md-tooltip {{ search.currency_from_name }}
+      .search-summary-split
+        i.material-icons keyboard_arrow_right
+      .search-summary-to
+        .currency-icon(ng-class='search.currency_to_css')
+          md-tooltip {{ search.currency_to_name }}
+      .search-summary-details {{ search.searches_normalised*100 | number: 0 }}%

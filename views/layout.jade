@@ -1,0 +1,16 @@
+doctype html
+html(ng-app='PoeCurrencyAnalyserApp')
+  head
+    base(href='/')
+    title Strong Box - Path of Exile Currency Analayser
+    meta(name='description', content='Strong Box is a currency analysing tool for Path of Exile currencies. Discover the best way to trade currency in seconds!')
+    meta(name='robots', content='INDEX,FOLLOW')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(rel='stylesheet', href='#{CLIENT_ROOT}/app-styles.css')
+    script(src='#{CLIENT_ROOT}/app-bundle.js')
+  body(ng-cloak)
+    #body-container(layout='row')
+      sidenav
+      .primary-container(flex, layout='column')
+        toolbar
+        ui-view.parent-ui-view(flex)

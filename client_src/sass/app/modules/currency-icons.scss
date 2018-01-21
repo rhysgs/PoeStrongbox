@@ -1,0 +1,47 @@
+$currencies: 
+  'orb-of-alteration',
+  'orb-of-fusing',
+  'orb-of-alchemy',
+  'chaos-orb',
+  'gemcutters-prism',
+  'exalted-orb',
+  'chromatic-orb',
+  'jewellers-orb',
+  'orb-of-chance',
+  'cartographers-chisel',
+  'orb-of-scouring',
+  'blessed-orb',
+  'orb-of-regret',
+  'regal-orb',
+  'divine-orb',
+  'vaal-orb',
+  'perandus-coin',
+  'orb-of-annulment',
+  'orb-of-binding',
+  'orb-of-horizons',
+  'silver-coin',
+  'harbinger-orb',
+  'ancient-orb'
+;
+
+.currency-icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+md-select {
+  .currency-icon {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@each $currency in $currencies {
+  .currency-icon.#{$currency} {
+    background-image: url('/public/img/currencies/#{$currency}.png');
+  }
+}

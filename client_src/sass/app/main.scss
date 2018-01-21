@@ -1,0 +1,23 @@
+
+@import './vendor/angular-material';
+@import './vendor/_google-icons';
+
+@import './pallette';
+@import './modules/layout';
+@import './modules/currency-icons';
+@import './modules/transaction-icons';
+@import './modules/sidenav';
+@import './modules/toolbar';
+@import './modules/ratio-analyser';
+@import './modules/leagues';
+
+#body-container {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+md-toast {
+  a {
+    color: #FFF;
+  }
+}

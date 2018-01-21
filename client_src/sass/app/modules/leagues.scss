@@ -1,0 +1,48 @@
+$leagues: 
+'standard',
+'hardcore',
+'harbinger',
+'hardcore-harbinger'
+;
+
+.league-background {
+
+}
+
+@each $league in $leagues {
+  .league-background.#{$league} {
+    background-size: cover;
+    background-position: center;
+    background-image: url('/public/img/leagues/#{$league}.png');
+  }
+}
+
+.league-list {
+  padding: 30px;
+}
+
+.league-list-item {
+  padding: 30px;
+  cursor: pointer;
+  transition: filter 0.25s ease-in-out;
+}
+
+.league-list-item:hover {
+  filter: brightness(140%);
+}
+
+.league-list-item-inner {
+  text-align: center;
+  width: 300px;
+  height: 160px;
+  color: map-get($pallette, white);
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.league-list-item-title {
+  user-select: none;
+  padding: 10px 0px;
+  background-color: rgba(0,0,0,0.5);
+}

@@ -1,0 +1,61 @@
+.ratio-analyser
+  .ratio-analyser-options
+    .section-title Search options
+    .section-content
+      div(layout='row')
+        md-input-container(flex='33')
+          label You have
+          md-select(ng-model='_rad.investing', ng-disabled='!_rad.currencies.length', ng-change='_rad.RequestCalculation()')
+            md-option(ng-value='currency' ng-repeat='currency in _rad.GetActiveCurrencyPool()')
+              .currency-icon(ng-class='currency.css')
+              | {{ currency.name }}
+        md-input-container(flex='33')
+          label You want
+          md-select(ng-model='_rad.exiting', ng-disabled='!_rad.currencies.length', ng-change='_rad.RequestCalculation()')
+            md-option(ng-value='currency' ng-repeat='currency in _rad.GetActiveCurrencyPool()')
+              .currency-icon(ng-class='currency.css')
+              | {{ currency.name }}
+        md-input-container(flex='33')
+          label How many {{ _rad.investing.name }} do you have?
+          input(ng-model='_rad.investAmount', type='number' min='1', ng-change='_rad.RequestCalculation()')
+      div(layout='row', layout-align='center')
+        md-input-container(flex='33')
+          label Max transactions
+          md-select(ng-model='_rad.depth', placeholder='Max exchanges', ng-change='_rad.RequestCalculation()')
+            md-option(ng-value='2') 2
+            md-option(ng-value='3') 3 (slow)
+            md-option(ng-value='4') 4 (very slow)
+        div(flex='66')
+          label.slider-label Minimum sellers ({{ _rad.minSellers }})
+          md-slider-container
+            md-slider(flex min='1', max='200', ng-model='_rad.minSellers', ng-change='_rad.RequestCalculation()')
+      div(layout='row', layout-align='start')
+        md-checkbox(ng-model='_rad.transactions.buy', ng-change='_rad.RequestCalculation()') Buy currency
+        md-checkbox(ng-model='_rad.transactions.sell', ng-change='_rad.RequestCalculation()') Sell currency
+  .ratio-analayser-pending(ng-show='_rad.loading')
+    md-progress-linear(md-mode='indeterminate')
+
+  div(ng-show='_rad.analysed > 0')
+    .ratio-summary Analysed {{ _rad.analysed | number: 0 }} combinations, showing {{ _rad.results.length | number: 0 }} of {{ _rad.allResults.length | number: 0 }} results you might be interested in.
+    .currency-result(ng-repeat='result in _rad.results')
+      .section-title.small
+        | {{ _rad.investAmount }} 
+        .currency-icon(ng-class='_rad.investing.css')
+          md-tooltip {{ _rad.investing.name }}
+        |  to {{ result.finalCount }} 
+        .currency-icon(ng-class='_rad.exiting.css')
+          md-tooltip {{ _rad.exiting.name }}
+      .section-content.small
+        div(layout='row', layout-align='start center')
+          .currency-chain-item(ng-repeat='chain in result.chain')
+            div(layout='row', layout-align='start center')
+              | {{ chain.sell ? 'Sell' : 'Invest' }} {{ chain.prev.finalCount }}
+              .currency-icon(ng-class='chain.prev.currency.css')
+                md-tooltip() {{ chain.prev.currency.name }}
+              | {{ chain.sell ? 'for' : 'in' }} {{ chain.finalCount }}
+              .currency-icon(ng-class='chain.currency.css')
+                md-tooltip() {{ chain.currency.name }}
+            div {{ chain.cleanRatio }} 
+              a(href='{{ chain.url }}', target='_blank') {{ chain.ratio.sellers }} sellers
+    .align-center(ng-if='_rad.results.length < _rad.allResults.length')
+      md-button.md-raised.md-primary(ng-click='_rad.ShowMore()') Show more
