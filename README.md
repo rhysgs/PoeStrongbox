@@ -18,7 +18,11 @@ This is now on github because I wrote it when I was bored after work and wanted 
 * ~: npm install
 * ~: db-migrate up
 
-3: Go into the 'leagues' database table and add the league you want to scan. The name of the league must match the league name in the query string used to fetch the data from poe.trade
+3: Build the clientside stuff
+
+* ~: gulp app
+
+4: Go into the 'leagues' database table and add the league you want to scan. The name of the league must match the league name in the query string used to fetch the data from poe.trade
 
 ---
 
