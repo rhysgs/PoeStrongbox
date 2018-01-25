@@ -2,18 +2,19 @@
   "defaultEnv": "local",
   "local": {
     "driver": "mysql",
-    "user": "<username>",
-    "password": "<password>",
-    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "host": "192.168.2.104",
     "database": "migrations",
     "multipleStatements": true
   },
-  "live": {
+  "production": {
     "driver": "mysql",
-    "user": "<username>",
-    "password": "<password>",
-    "host": "<live db host>",
+    "user": "root",
+    "password": "root",
+    "host": "192.168.2.104",
     "database": "migrations",
+    "port": 3307,
     "multipleStatements": true
   }
 }

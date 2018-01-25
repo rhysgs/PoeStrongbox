@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  maria_db:
+    container_name: poe-db
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_USER: strongbox
+      MYSQL_PASSWORD: strongbox
+      MYSQL_DATABASE: migrations
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3307:3306
+    networks:
+      - poe
+
+  strongbox:
+    container_name: poe-strongbox
+    build: .
+    networks: poe
+    environment:
+      NODE_ENV: production
+    restart: always
+    ports:
+      - 3000:3000
+      - 3210:3210
+    networks:
+      - poe
+
+
+networks:
+  poe:
+    driver: bridge

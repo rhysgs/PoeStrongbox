@@ -1,0 +1,6 @@
+{
+  "http_port": 3000,
+  "https_port": 3210,
+  "key": "privkey.pem",
+  "cert": "cert.pem"
+}
