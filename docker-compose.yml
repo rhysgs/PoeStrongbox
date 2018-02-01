@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   maria_db:
@@ -11,9 +11,11 @@ services:
       MYSQL_DATABASE: migrations
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3307:3306
+      - 3306:3306
     networks:
       - poe
+    healthcheck:
+      test: "exit 0"
 
   strongbox:
     container_name: poe-strongbox
@@ -27,7 +29,9 @@ services:
       - 3210:3210
     networks:
       - poe
-
+    depends_on:
+      maria_db:
+        condition: service_healthy
 
 networks:
   poe:

@@ -4,17 +4,18 @@
     "driver": "mysql",
     "user": "root",
     "password": "root",
-    "host": "192.168.2.104",
+    "host": "192.168.2.101",
     "database": "migrations",
+    "port": 3306,
     "multipleStatements": true
   },
   "production": {
     "driver": "mysql",
     "user": "root",
     "password": "root",
-    "host": "192.168.2.104",
+    "host": "192.168.2.101",
     "database": "migrations",
-    "port": 3307,
+    "port": 3306,
     "multipleStatements": true
   }
 }
