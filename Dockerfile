@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN node_modules/.bin/gulp app
+
 EXPOSE 3000
 
 CMD ["npm", "start"]

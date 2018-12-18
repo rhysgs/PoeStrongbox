@@ -50,7 +50,7 @@ return conn_pool.query('SELECT * FROM information_schema.tables WHERE table_sche
                     var date_array = date_regex.exec(split[0]);
                     var date = new Date(
                         (+date_array[1]),
-                        (+date_array[2])-1,
+                        (+date_array[2]),
                         (+date_array[3]),
                         (+date_array[4]),
                         (+date_array[5]),
