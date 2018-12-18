@@ -40,9 +40,14 @@ function GetData(league, fromId, toId, callback) {
   console.log(`Fetching ${url}`);
   request({
     url: url,
-    method: 'GET'
+    method: 'GET',
+    gzip: true,
+    encoding: 'utf8',
+    headers: {
+      'Accept-Encoding': 'gzip'
+    }
   }, (error, response, body) => {
-    console.log(`Recieved ${url}`)
+    console.log(`Recieved ${url}`);
     callback(error, body);
   });
 }
@@ -95,7 +100,7 @@ function CalcSinAvg(data) {
   const lowerDeltaCutoff = (1 - deltaCutoff);//if something is less than 0.6x the average it is ignored
   const upperDeltaCutoff = 1 / (1 - deltaCutoff);//if something is greater than 1.7x the average it is ingored 
   var ratios = data.ratios;
-  var start = Math.floor(ratios.length/7);
+  var start = Math.floor(ratios.length / 7);
 
   var sum = 0;
   var factor = 0;
