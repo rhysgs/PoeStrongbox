@@ -10,7 +10,7 @@ This is now on github because I wrote it when I was bored after work and wanted 
 
 1: Go to ~/database.json and set up your local/live databases.
 
-* Your databases MUST include a table called 'migrations'.
+* Your databases MUST include a database called 'migrations'.
 
 2: Install npm packages
 
