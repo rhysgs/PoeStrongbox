@@ -23,7 +23,6 @@
 
     $rootScope.$on('league-recieved', function(evt, league) {
       $scope.league = league;
-      console.log('league nav: ', league);
     });
 
     $rootScope.$on('currencies-recieved', function(evt, currencies) {
