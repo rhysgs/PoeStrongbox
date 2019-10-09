@@ -267,7 +267,7 @@ function CheckPull(league, callback) {
 function CreatePull(league, callback) {
   Db.Insert('poe', 'poe_currency', 'pulls', {
     league_id: league.id,
-    expires_at: moment().add(Config.Pulls.ttl.amount, Config.Pulls.ttl.units).format()
+    expires_at: moment().add(Config.Pulls.ttl.amount, Config.Pulls.ttl.units).format("YYYY-MM-DD HH:mm:ss")
   }, (error, results) => {
     if (error) {
       return callback({

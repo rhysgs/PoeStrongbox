@@ -4,30 +4,46 @@
  * Module dependencies.
  */
 
+const config = require('../config');
+
 var app = require('../app');
 var debug = require('debug')('nodejs:server');
-var http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
 
 /**
  * Create HTTP server.
  */
+if (typeof config.http_port != 'undefined' && config.http_port != null) {
+    var http = require('http');
+    var http_port = normalizePort(config.http_port || '3000');
+    var httpServer = http.createServer(app);
 
-var server = http.createServer(app);
+    httpServer.listen(config.http_port);
+
+    httpServer.on('error', onError);
+    httpServer.on('listening', buildListeningCallback(httpServer));
+}
 
 /**
- * Listen on provided port, on all network interfaces.
+ * Create HTTPS server.
  */
+if (typeof config.https_port != 'undefined' && config.https_port != null) {
+    var https = require('https');
+    var fs = require('fs');
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+    var privateKey  = fs.readFileSync(config.key, 'utf8');
+    var certificate = fs.readFileSync(config.cert, 'utf8');
+    var credentials = {key: privateKey, cert: certificate};
+
+    var https_port = normalizePort(config.https_port || '3210');
+    var httpsServer = https.createServer(credentials, app);
+
+    // Listen on provided port, on all network interfaces.
+    httpsServer.listen(config.https_port);
+
+    httpsServer.on('error', onError);
+    httpsServer.on('listening', buildListeningCallback(httpsServer));
+}
 
 /**
  * Normalize a port into a number, string, or false.
@@ -81,10 +97,12 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+function buildListeningCallback(server) {
+    return function onListening() {
+        var addr = server.address();
+        var bind = typeof addr === 'string'
+            ? 'pipe ' + addr
+            : 'port ' + addr.port;
+        console.log('HTTP Listening on ' + bind);
+    }
 }

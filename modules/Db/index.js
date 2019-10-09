@@ -9,6 +9,7 @@ const connection = {
     host: database.host,
     user: database.user,
     password: database.password,
+    port: database.port,
     multipleStatements: true
   }
 };
